@@ -9,72 +9,108 @@
             --gold: #d4af37;
             --dark-brown: #8b4513;
             --bg: #f4f1ea;
+            --card-white: #ffffff;
+            --text-main: #333333;
         }
+
         body {
             font-family: 'Sarabun', sans-serif;
             line-height: 1.6;
-            color: #333;
-            max-width: 800px;
+            color: var(--text-main);
+            max-width: 850px;
             margin: 0 auto;
             padding: 20px;
             background-color: var(--bg);
-            transition: all 0.3s ease;
+            transition: background-color 0.3s ease;
         }
+
         header {
             text-align: center;
-            padding: 40px 0;
+            padding: 50px 0;
             border-bottom: 2px solid var(--gold);
         }
-        h1 { color: var(--dark-brown); margin-bottom: 10px; }
-        
-        /* Toggle Switch Style */
+
+        h1 { color: var(--dark-brown); margin-bottom: 10px; font-weight: 700; }
+        .intro { font-style: italic; color: #666; margin-bottom: 20px; }
+
+        /* Navigation Controls */
         .controls {
             text-align: center;
-            margin: 20px 0;
+            margin: 30px 0;
             position: sticky;
-            top: 10px;
-            z-index: 100;
+            top: 15px;
+            z-index: 1000;
         }
+
         .btn-toggle {
-            background: white;
+            background: var(--card-white);
             border: 2px solid var(--gold);
             color: var(--dark-brown);
-            padding: 8px 20px;
+            padding: 10px 25px;
             cursor: pointer;
-            border-radius: 20px;
+            border-radius: 25px;
             font-weight: bold;
-            transition: 0.3s;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
-        .btn-toggle:hover { background: var(--gold); color: white; }
 
-        .vagga-container { display: grid; gap: 20px; margin-top: 30px; }
-        .vagga-card {
-            background: white;
-            padding: 25px;
-            border-left: 5px solid var(--gold);
-            border-radius: 4px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        .btn-toggle:hover {
+            background: var(--gold);
+            color: white;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
         }
+
+        /* Vagga Cards Container */
+        .vagga-container {
+            display: grid;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .vagga-card {
+            background: var(--card-white);
+            padding: 30px;
+            border-left: 6px solid var(--gold);
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+            /* Artisan Micro-interaction */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-left-color 0.3s ease;
+        }
+
+        .vagga-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+            border-left-color: var(--dark-brown);
+        }
+
         .vagga-title {
-            font-weight: bold;
+            font-weight: 800;
             color: var(--dark-brown);
-            font-size: 1.2em;
-            margin-bottom: 12px;
+            font-size: 1.25rem;
+            margin-bottom: 15px;
             display: block;
         }
 
-        /* Language Display Logic */
+        /* Language Toggle Logic */
         .lang-en { display: none; font-style: italic; color: #555; }
         body.show-en .lang-th { display: none; }
         body.show-en .lang-en { display: block; }
 
         footer {
             text-align: center;
-            margin-top: 50px;
-            padding: 20px;
-            font-size: 0.9em;
-            color: #888;
+            margin-top: 60px;
+            padding: 40px;
+            border-top: 1px solid #ddd;
+            font-size: 0.95rem;
+            color: #777;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            header { padding: 30px 0; }
+            .vagga-card { padding: 20px; }
         }
     </style>
 </head>
@@ -83,13 +119,13 @@
 <header>
     <h1 class="lang-th">พระธรรมบท 2600</h1>
     <h1 class="lang-en">Dhammapada 2600</h1>
-    <p class="lang-th">"หัวใจพระธรรมบท 26 วรรค เพื่อชีวิตที่ตื่นรู้"</p>
-    <p class="lang-en">"The 26 Essentials for an Awakened Life"</p>
+    <p class="lang-th intro">"26 หัวใจสำคัญแห่งธรรม เพื่อชีวิตที่ตื่นรู้และเรียบง่าย"</p>
+    <p class="lang-en intro">"The 26 Essentials for a Mindful and Simple Life"</p>
 </header>
 
 <div class="controls">
     <button class="btn-toggle" onclick="toggleLang()">
-        <span class="lang-th">Switch to English</span>
+        <span class="lang-th">English Translation</span>
         <span class="lang-en">เปลี่ยนเป็นภาษาไทย</span>
     </button>
 </div>
@@ -98,7 +134,7 @@
     <div class="vagga-card">
         <span class="vagga-title">1. <span class="lang-th">ยมกวรรค (หมวดคู่)</span><span class="lang-en">Yamaka Vagga (The Pairs)</span></span>
         <p class="lang-th">ใจเป็นประธานของทุกสิ่ง หากใจชั่วความทุกข์ย่อมตามมา หากใจดีความสุขย่อมติดตามไป เวรย่อมระงับด้วยการไม่จองเวร</p>
-        <p class="lang-en">Mind is the forerunner of all states. Suffering follows an evil mind, while happiness follows a pure mind like a shadow. Hatred is never appeased by hatred.</p>
+        <p class="lang-en">Mind is the forerunner of all states. Suffering follows an evil mind, while happiness follows a pure mind. Hatred is never appeased by hatred.</p>
     </div>
 
     <div class="vagga-card">
@@ -107,40 +143,133 @@
         <p class="lang-en">Heedfulness is the path to the Deathless. The heedless are as if already dead.</p>
     </div>
 
-    <div class="vagga-card">
-        <span class="vagga-title">3. <span class="lang-th">จิตตวรรค (หมวดจิต)</span><span class="lang-en">Citta Vagga (The Mind)</span></span>
+           <div class="vagga-card">
+        <span class="vagga-title">3. <span class="lang-th">จิตตวรรค</span><span class="lang-en">Citta (The Mind)</span></span>
         <p class="lang-th">จิตนี้ดิ้นรนและรักษายาก การฝึกจิตให้เชื่องนำมาซึ่งความสุขยิ่งใหญ่</p>
         <p class="lang-en">The mind is flighty and hard to guard. A tamed mind brings great happiness.</p>
     </div>
-
     <div class="vagga-card">
-        <span class="vagga-title">10. <span class="lang-th">ทัณฑวรรค (หมวดอาชญา)</span><span class="lang-en">Danda Vagga (Punishment)</span></span>
-        <p class="lang-th">สัตว์ทุกจำพวกกลัวตายและรักสุขเหมือนเรา จงเอาใจเขามาใส่ใจเรา ไม่เบียดเบียนผู้อื่น</p>
-        <p class="lang-en">All tremble at violence; all fear death. Putting oneself in the place of another, one should not kill nor cause another to kill.</p>
+        <span class="vagga-title">4. <span class="lang-th">ปุปผวรรค</span><span class="lang-en">Puppha (Flowers)</span></span>
+        <p class="lang-th">ชีวิตสั้นเหมือนดอกไม้ จงเลือกเก็บเฉพาะเกสรคือบุญกุศล กลิ่นแห่งศีลย่อมทวนลมไปได้ทุกทิศ</p>
+        <p class="lang-en">Life is brief as a flower. Collect the essence of virtue, for the perfume of virtue travels even against the wind.</p>
     </div>
-
     <div class="vagga-card">
-        <span class="vagga-title">20. <span class="lang-th">มรรควรรค (หมวดทาง)</span><span class="lang-en">Magga Vagga (The Path)</span></span>
+        <span class="vagga-title">5. <span class="lang-th">พาลวรรค</span><span class="lang-en">Bala (The Fool)</span></span>
+        <p class="lang-th">สังสารวัฏของคนพาลผู้ไม่รู้พระสัทธรรมนั้นยาวไกลนัก การคบคนพาลนำมาซึ่งความทุกข์</p>
+        <p class="lang-en">Long is the cycle of birth for the fool who knows not the Dhamma. Company with fools is always painful.</p>
+    </div>
+    <div class="vagga-card">
+        <span class="vagga-title">6. <span class="lang-th">ปัณฑิตวรรค</span><span class="lang-en">Pandita (The Wise)</span></span>
+        <p class="lang-th">บัณฑิตย่อมแนะนำในสิ่งที่ควร เหมือนชี้ขุมทรัพย์ให้ บัณฑิตย่อมไม่หวั่นไหวต่อคำนินทาและสรรเสริญ</p>
+        <p class="lang-en">The wise point out your faults as if revealing a treasure. They remain unmoved by praise or blame.</p>
+    </div>
+    <div class="vagga-card">
+        <span class="vagga-title">7. <span class="lang-th">อรหันตวรรค</span><span class="lang-en">Arahanta (The Perfected)</span></span>
+        <p class="lang-th">ผู้บรรลุธรรมแล้วไม่มีความเร่าร้อน มีจิตสงบ วาจาสงบ และการกระทำสงบ</p>
+        <p class="lang-en">For the enlightened, there is no more suffering. Their mind, speech, and actions are peaceful.</p>
+    </div>
+    <div class="vagga-card">
+        <span class="vagga-title">8. <span class="lang-th">สหัสสวรรค</span><span class="lang-en">Sahassa (The Thousands)</span></span>
+        <p class="lang-th">คำพูดที่มีสาระเพียงคำเดียว ดีกว่าคำพูดพันคำที่ไร้ประโยชน์ การชนะตนเองดีกว่าชนะศึกพันครั้ง</p>
+        <p class="lang-en">One useful word is better than a thousand empty ones. Victory over oneself is better than victory over others.</p>
+    </div>
+    <div class="vagga-card">
+        <span class="vagga-title">9. <span class="lang-th">ปาปวรรค</span><span class="lang-en">Papa (Evil)</span></span>
+        <p class="lang-th">จงรีบทำความดีและห้ามจิตจากบาป บาปเพียงน้อยอย่าดูหมิ่นว่าจะไม่ให้ผล</p>
+        <p class="lang-en">Hasten to do good; restrain the mind from evil. Do not underestimate even a small evil.</p>
+    </div>
+    <div class="vagga-card">
+        <span class="vagga-title">10. <span class="lang-th">ทัณฑวรรค</span><span class="lang-en">Danda (Punishment)</span></span>
+        <p class="lang-th">สัตว์ทุกจำพวกกลัวตายและรักสุขเหมือนเรา จงเอาใจเขามาใส่ใจเรา ไม่เบียดเบียนผู้อื่น</p>
+        <p class="lang-en">All fear death; all love life. Putting oneself in the place of another, one should not kill nor cause to kill.</p>
+    </div>
+    <div class="vagga-card">
+        <span class="vagga-title">11. <span class="lang-th">ชราวรรค</span><span class="lang-en">Jara (Old Age)</span></span>
+        <p class="lang-th">ร่างกายนี้ร่วงโรยและเน่าเปื่อยเป็นธรรมดา อย่ามัวเมาในวัย จงมองให้เห็นความจริงของสังขาร</p>
+        <p class="lang-en">This body is frail and subject to decay. Behold this city of bones, and do not be deluded by youth.</p>
+    </div>
+    <div class="vagga-card">
+        <span class="vagga-title">12. <span class="lang-th">อัตตวรรค</span><span class="lang-en">Atta (Self)</span></span>
+        <p class="lang-th">ตนเป็นที่พึ่งแห่งตน การฝึกตนให้ดีคือการได้ที่พึ่งที่หาได้ยากยิ่ง</p>
+        <p class="lang-en">One is one's own protector. With a well-tamed self, one gains a protector that is hard to find.</p>
+    </div>
+    <div class="vagga-card">
+        <span class="vagga-title">13. <span class="lang-th">โลกวรรค</span><span class="lang-en">Loka (The World)</span></span>
+        <p class="lang-th">อย่าจมอยู่ในโลกที่มืดมน ผู้ที่ละความชั่วด้วยความดี ย่อมทำโลกนี้ให้สว่างเหมือนพระจันทร์พ้นจากเมฆ</p>
+        <p class="lang-en">Do not follow the way of the world. He who overcomes evil with good illuminates the world like the moon free from clouds.</p>
+    </div>
+    <div class="vagga-card">
+        <span class="vagga-title">14. <span class="lang-th">พุทธวรรค</span><span class="lang-en">Buddha (The Buddha)</span></span>
+        <p class="lang-th">การไม่ทำชั่วทั้งปวง การทำกุศลให้ถึงพร้อม และการทำจิตให้บริสุทธิ์ คือหัวใจของพุทธะ</p>
+        <p class="lang-en">To avoid all evil, to cultivate good, and to purify one's mind—this is the teaching of the Buddhas.</p>
+    </div>
+    <div class="vagga-card">
+        <span class="vagga-title">15. <span class="lang-th">สุขวรรค</span><span class="lang-en">Sukha (Happiness)</span></span>
+        <p class="lang-th">ความสุขที่เกิดจากการไม่มีเวรและการไม่มีความกังวล ความสุขอื่นยิ่งกว่าความสงบไม่มี</p>
+        <p class="lang-en">Happily we live without hatred. There is no happiness greater than peace.</p>
+    </div>
+    <div class="vagga-card">
+        <span class="vagga-title">16. <span class="lang-th">ปิยวรรค</span><span class="lang-en">Piya (Affection)</span></span>
+        <p class="lang-th">ความโศกและภัยเกิดจากของรัก หากไม่มีรักก็ไม่มีโศก จงอย่าผูกพันจนเกินไป</p>
+        <p class="lang-en">From affection comes grief; from affection comes fear. Free from affection, there is no grief or fear.</p>
+    </div>
+    <div class="vagga-card">
+        <span class="vagga-title">17. <span class="lang-th">โกธวรรค</span><span class="lang-en">Kodha (Anger)</span></span>
+        <p class="lang-th">จงละความโกรธ ชนะความโกรธด้วยความไม่โกรธ ชนะคนชั่วด้วยความดี</p>
+        <p class="lang-en">Conquer the angry by non-anger; conquer the wicked by goodness.</p>
+    </div>
+    <div class="vagga-card">
+        <span class="vagga-title">18. <span class="lang-th">มลวรรค</span><span class="lang-en">Mala (Impurities)</span></span>
+        <p class="lang-th">มลทินที่ร้ายแรงที่สุดคือ "อวิชชา" จงหมั่นกำจัดมลทินของตนเหมือนช่างทองปัดสนิม</p>
+        <p class="lang-en">Ignorance is the greatest impurity. Shake off your impurities as a smith shakes off dross from silver.</p>
+    </div>
+    <div class="vagga-card">
+        <span class="vagga-title">19. <span class="lang-th">ธัมมัฏฐวรรค</span><span class="lang-en">Dhammattha (The Righteous)</span></span>
+        <p class="lang-th">ผู้ตั้งอยู่ในธรรมคือผู้ที่วินิจฉัยโดยธรรม ไม่ลำเอียง และมีสติปัญญาประคองตน</p>
+        <p class="lang-en">The righteous are those who judge with impartiality and act in accordance with the Dhamma.</p>
+    </div>
+    <div class="vagga-card">
+        <span class="vagga-title">20. <span class="lang-th">มรรควรรค</span><span class="lang-en">Magga (The Path)</span></span>
         <p class="lang-th">ทางสายเอกคืออริยอัฏฐังคิกมรรค ท่านทั้งหลายต้องทำความเพียรเอง ตถาคตเป็นเพียงผู้ชี้ทาง</p>
         <p class="lang-en">The Eightfold Path is the best of paths. You yourselves must strive; the Buddhas only point the way.</p>
     </div>
-
     <div class="vagga-card">
-        <span class="vagga-title">24. <span class="lang-th">ตัณหาวรรค (หมวดตัณหา)</span><span class="lang-en">Tanha Vagga (Craving)</span></span>
-        <p class="lang-th">ตัณหาย่อมพอกพูนเหมือนเถาวัลย์ จงตัดรากตัณหาเสียให้สิ้นเพื่อหยุดวงจรแห่งทุกข์</p>
-        <p class="lang-en">Craving grows like a creeper. Dig out the root of craving to end the cycle of suffering.</p>
+        <span class="vagga-title">21. <span class="lang-th">ปกิณณกวรรค</span><span class="lang-en">Pakinnaka (Miscellaneous)</span></span>
+        <p class="lang-th">จงยอมเสียสละสุขส่วนน้อยเพื่อสุขที่ยิ่งใหญ่ ผู้ที่ตื่นอยู่เสมอและฝึกตนย่อมบรรลุธรรม</p>
+        <p class="lang-en">If by giving up a small pleasure one sees a great joy, let the wise man leave the small for the sake of the great.</p>
     </div>
+    <div class="vagga-card">
+        <span class="vagga-title">22. <span class="lang-th">นิรยวรรค</span><span class="lang-en">Niraya (Hell)</span></span>
+        <p class="lang-th">ผู้ทำชั่วแล้วบอกว่าไม่ได้ทำ ย่อมไปสู่ทางที่ต่ำ การประพฤติธรรมไม่ดีคือภัยของตนเอง</p>
+        <p class="lang-en">The liar and the wrongdoer both go to a state of suffering. Badly practiced virtue leads to one's own ruin.</p>
+    </div>
+    <div class="vagga-card">
+        <span class="vagga-title">23. <span class="lang-th">นาควรรค</span><span class="lang-en">Naga (The Elephant)</span></span>
+        <p class="lang-th">จงอดทนต่อคำล่วงเกินเหมือนช้างศึกในสนามรบ การฝึกตนเองสำคัญกว่าสิ่งอื่นใด</p>
+        <p class="lang-en">Endure harsh words as an elephant endures arrows in battle. Self-control is the highest training.</p>
+    </div>
+    <div class="vagga-card">
+        <span class="vagga-title">24. <span class="lang-th">ตัณหาวรรค</span><span class="lang-en">Tanha (Craving)</span></span>
+        <p class="lang-th">ตัณหาย่อมพอกพูนเหมือนเถาวัลย์ จงตัดรากตัณหาเสียให้สิ้นเพื่อหยุดวงจรแห่งทุกข์</p>
+        <p class="lang-en">Craving grows like a creeper. Dig out the root of craving to put an end to suffering.</p>
+    </div>
+    <div class="vagga-card">
+        <span class="vagga-title">25. <span class="lang-th">ภิกขุวรรค</span><span class="lang-en">Bhikkhu (The Monk)</span></span>
+        <p class="lang-th">ผู้สำรวมระวังในทวารทั้งปวง และไม่ยึดมั่นในสิ่งใด ย่อมชื่อว่าเป็นผู้สงบระงับ</p>
+        <p class="lang-en">Restrained in hand, foot, and speech; well-controlled in every way—such is a peaceful monk.</p>
+    </div> 
 
     <div class="vagga-card">
         <span class="vagga-title">26. <span class="lang-th">พราหมณวรรค (หมวดพราหมณ์)</span><span class="lang-en">Brahmana Vagga (The Holy Man)</span></span>
-        <p class="lang-th">ความเป็นผู้ประเสริฐไม่ได้อยู่ที่ชาติกำเนิด แต่อยู่ที่ความบริสุทธิ์และการละสังโยชน์</p>
-        <p class="lang-en">Not by matted hair nor birth is one a Brahmin, but by truth, Dhamma, and purity within.</p>
+        <p class="lang-th">ความเป็นผู้ประเสริฐไม่ได้อยู่ที่ชาติกำเนิด แต่อยู่ที่ความบริสุทธิ์ การตัดกิเลส และปัญญาภายใน</p>
+        <p class="lang-en">Not by birth is one a holy man, but by truth, virtue, and internal purity.</p>
     </div>
 </div>
 
 <footer>
     <p class="lang-th">สพฺพทานํ ธมฺมทานํ ชินาติ - การให้ธรรมทาน ชนะการให้ทั้งปวง</p>
     <p class="lang-en">The gift of Dhamma excels all gifts.</p>
+    <p style="margin-top: 10px; font-size: 0.8rem;">Created with heart for the 2600th Enlightenment Anniversary</p>
 </footer>
 
 <script>
